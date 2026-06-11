@@ -1,7 +1,7 @@
 const attorneys = [
   {
-    initials: 'KM',
     name: 'Kevin J. Murphy',
+    photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face',
     credentials: [
       'J.D., Suffolk University Law School, 1983',
       'B.A., Boston College, 1974',
@@ -14,8 +14,8 @@ const attorneys = [
     email: 'kevin@themurphylawoffices.com',
   },
   {
-    initials: 'BA',
     name: 'Brian T. Akashian',
+    photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
     credentials: [
       'J.D., Suffolk University Law School, 2004',
       'A.B., College of the Holy Cross, 2001',
@@ -33,7 +33,6 @@ export default function Attorneys() {
   return (
     <section id="attorneys" className="py-section px-4 md:px-6 bg-surface">
       <div className="max-w-[1200px] mx-auto">
-        {/* Section header */}
         <div className="text-center mb-16">
           <p className="text-caption text-accent uppercase tracking-[0.15em] font-semibold mb-3">
             Our Team
@@ -46,20 +45,19 @@ export default function Attorneys() {
           </p>
         </div>
 
-        {/* Attorney cards — 2-column */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {attorneys.map((attorney) => (
             <div
               key={attorney.email}
               className="bg-canvas border border-divider rounded-lg p-6 md:p-8 lg:p-10 shadow-card"
             >
-              {/* Photo placeholder + name */}
               <div className="flex items-start gap-5 mb-6">
-                <div className="w-[72px] h-[72px] rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                  <span className="font-serif text-[22px] font-semibold text-text-on-dark">
-                    {attorney.initials}
-                  </span>
-                </div>
+                <img
+                  src={attorney.photo}
+                  alt={attorney.name}
+                  className="w-[80px] h-[80px] rounded-full object-cover flex-shrink-0 border-2 border-accent/20"
+                  loading="lazy"
+                />
                 <div>
                   <h3 className="font-serif text-[22px] md:text-[24px] font-semibold text-primary leading-tight mb-1">
                     {attorney.name}
@@ -73,7 +71,6 @@ export default function Attorneys() {
                 </div>
               </div>
 
-              {/* Credentials list */}
               <ul className="space-y-2.5">
                 {attorney.credentials.map((cred) => (
                   <li key={cred} className="flex items-start gap-3 text-[15px] text-text">
